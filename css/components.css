@@ -111,7 +111,6 @@
     }
     .gallery-item {
         flex-basis: 90vw;
-        height: 180px;
     }
     .projects-grid {
         gap: 16px;
@@ -366,12 +365,12 @@
     color: white;
     cursor: pointer;
     padding: 10px 15px;
-    border-radius: 50%; /* 圆形按钮 */
+    border-radius: 50%; 
     font-size: 18px;
     opacity: 0.7;
     transition: opacity 0.3s;
 }
 
 #back-to-top-btn:hover {
-    opacity: 1; /* 鼠标悬停时不透明 */
+    opacity: 1; 
 }
