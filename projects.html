@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My projects - Mathilda的个人网站</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/layouts.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="site-logo">
+                <a href="index.html">Mathilda's Website</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="about.html">关于我</a></li>
+                    <li><a href="projects.html">我的项目</a></li>
+                    <li><a href="life.html">日常生活</a></li>
+                    <li><a href="contact.html">联系我</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="skills">
+                <h1 class="en-title">My skills.</h1>
+                <p>以下是我目前学习和掌握的一些主要技能👾：</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>具体技能</th>
+                            <th>所属类别</th>
+                            <th>相关项目</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CSS, HTML, JavaScript</td>
+                            <td>Front-end</td>
+                            <td><a href="">my-personal-website</a></td>
+                        </tr>
+                        <tr>
+                            <td>Numpy, Pandas, Matplotlib, Seaborn</td>
+                            <td>Data Analysis</td>
+                            <td><a href="https://github.com/Mathilda-aller/mbappe-nlp-sentiment-analysis" target="_blank">nlp-project</a></td>
+                        </tr>
+                        <tr>
+                            <td>Selenium, smtplib</td>
+                            <td>Data Science</td>
+                            <td><a href="https://github.com/Mathilda-aller/bfsu_email_push" target="_blank">bfsu_email_push</a></td>
+                        </tr>
+                        <tr>
+                            <td>SpaCy, NLTK, NetworkX</td>
+                            <td>Nature Language Processing</td>
+                            <td><a href="https://github.com/Mathilda-aller/mbappe-nlp-sentiment-analysis" target="_blank">nlp-project</a></td>
+                        </tr>
+                        <tr>
+                            <td>Scikit-learn</td>
+                            <td>Machine Learning</td>
+                            <td><a href="https://github.com/Mathilda-aller/Kaggle-Calorie-Prediction" target="_blank">Kaggle-project</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            
+            <section class="projects-grid">
+                <h2 class="en-title">My projects.✨</h2>
+                <p>(点击“查看代码”即可直接导航至github相应的repository中。)</p>
+
+                <article class="project-card">
+                    <img class="card-image" src="images\project-bfsu.png" alt="code snippet">
+                    <div class="card-content">
+                        <h2 class="card-title">📬 北外海外实习实践信息邮件推送工具</h2>
+                        <p class="card-description">一个自动化爬虫工具，定期抓取北京外国语大学海外实习实践官网的最新通知，当有新项目发布时，能自动通过邮件发送给订阅者，确保不会错过任何重要信息。</p>
+                        <ul class="card-tech-list">
+                            <li>Selenium</li>
+                            <li>smtplib</li>
+                            <li>Python</li>
+                        </ul>
+                        <div class="card-links">                      
+                            <a href="https://github.com/Mathilda-aller/bfsu_email_push" target="_blank">查看代码</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <img class="card-image" src="images\nlp-project.png" alt="nlp project wordcloud">
+                    <div class="card-content">
+                        <h2 class="card-title">📜 自然语言处理项目</h2>
+                        <p class="card-description">
+本项目首先通过Python脚本抓取YouTube评论数据，继而利用NLTK库进行分词、词形还原等文本预处理。项目的核心是调用了Hugging Face平台上一个基于CamemBERT的法语模型进行情感分析.最后，所有分析结果均通过Matplotlib与WordCloud进行了可视化呈现。</p>
+                        <ul class="card-tech-list">
+                            <li>Spacy</li>
+                            <li>NLTK</li>
+                            <li>NetworkX</li>
+                            <li>Pandas</li>
+                            <li>Matplotlib</li>
+                            <li>NetworkX</li>
+                        </ul>
+                        <div class="card-links">                      
+                            <a href="https://github.com/Mathilda-aller/mbappe-nlp-sentiment-analysis" target="_blank">查看代码</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <img class="card-image" src="images\project-kaggle.png" alt="kaggle project">
+                    <div class="card-content">
+                        <h2 class="card-title">🏋️‍♂️ Kaggle卡路里预测项目</h2>
+                        <p class="card-description">这是一个完整的机器学习项目，旨在通过个人的身体指标（如年龄、身高、体重）和运动数据（如时长、心率）来预测卡路里消耗量。项目采用了数据探索（EDA）、特征工程，并应用了XGBoost和LightGBM等先进的梯度提升模型进行预测。</p>
+                        <ul class="card-tech-list">
+                            <li>Scikit-learn</li>
+                            <li>Pandas</li>
+                            <li>Seaborn</li>
+                            <li>LightGBM</li>
+                            <li>XGBoost</li>
+                        </ul>
+                        <div class="card-links">                      
+                            <a href="https://github.com/Mathilda-aller/Kaggle-Calorie-Prediction" target="_blank">查看代码</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <img class="card-image" src="images\project-notes.png" alt="Python Libraries Notes">
+                    <div class="card-content">
+                        <h2 class="card-title">Python Libraries Notes (For Data Analysis and NLP) 📚</h2>
+                        <p class="card-description">这其实不是一个项目啦。里面包含一些我在学习数据分析和nlp中常用的Python库的资料（代码snippets, 思维导图之类的）。如果可能对你有帮助的话可以看看呀~</p>
+                        <ul class="card-tech-list">
+                            <li>NumPy</li>
+                            <li>Pandas</li>
+                            <li>SpaCy</li>
+                        </ul>
+                        <div class="card-links">                      
+                            <a href="https://github.com/Mathilda-aller/data-analysis-nlp-notes" target="_blank">查看代码</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <img class="card-image" src="images\project-web.png" alt="my personal website">
+                    <div class="card-content">
+                        <h2 class="card-title">我的个人网站</h2>
+                        <p class="card-description">就是你现在看到的这个啦(*^▽^*)</p>
+                        <ul class="card-tech-list">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                        <div class="card-links">                      
+                            <a href="" target="_blank">查看代码</a>
+                        </div>
+                    </div>
+                </article>
+
+
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Mathilda. 保留所有权利.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,312 @@
+/* === 首页大字 === */
+.hero-section h1 {
+    font-size: 4rem; /* 非常大的字号 */
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    color: #6c757d; /* 用一个次要的文字颜色 */
+}
+
+/* === PHOTO GALLERY 瀑布流布局 === */
+.photo-gallery {
+    column-count: 3;
+    column-gap: 24px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 16px;
+}
+
+.photo-gallery p {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; 
+    justify-content: center; 
+    margin-top: 40px; 
+}
+
+.gallery-item {
+    break-inside: avoid;
+    margin-bottom: 24px;
+    border-radius: 14px;
+    box-shadow: 0 2px 16px rgba(104,90,213,0.08);
+    background: #fff;
+    transition: transform 0.18s, box-shadow 0.18s;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    object-fit: contain;
+    background: #f8f8f8;
+}
+
+/* hover特效：图片微缩+显示描述 */
+.gallery-item:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(149,0,202,0.13);
+}
+
+.item-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: azure;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.item-description p {
+    margin: 0;
+    font-family: "Noto Sans SC", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 1.5rem;
+    font-style: normal;
+}
+
+.gallery-item:hover .item-description {
+    opacity: 1;
+}
+
+/* 响应式优化 */
+@media (max-width: 700px) {
+    .hero-section {
+        height: 60vh;
+        min-height: 260px;
+        padding: 0 8px;
+    }
+    .hero-section .en-title {
+        font-size: 2rem;
+    }
+    .photo-gallery {
+        column-count: 2;
+        gap: 12px;
+    }
+    .gallery-item {
+        flex-basis: 90vw;
+        height: 180px;
+    }
+    .projects-grid {
+        gap: 16px;
+    }
+}
+@media (max-width: 600px) {
+    .photo-gallery { column-count: 1; }
+}
+
+/* === 项目卡片 Projects cards === */
+.project-card{
+    background-color: var(--card-background);
+    border: 1px solid var(--subtle-border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* 鼠标悬停时，卡片向上移动5px */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* 阴影变得更深、更弥散 */
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column; /* 设置为垂直方向排列 */
+    height: 100%; /* 让这个容器占满卡片的整个高度 */
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem; /* 标题和描述之间的间距 */
+}
+
+.card-description {
+    font-size: 1rem;
+    flex-grow: 1; /* 让描述区域占据所有可用的额外垂直空间，这是把链接推向底部的关键之一 */
+    margin-bottom: 1rem; /* 描述和技术列表之间的间距 */
+}
+
+.card-tech-list {
+    list-style: none; /* 去掉小圆点 */
+    padding: 0;
+    margin: 0;
+    display: flex; /* 让标签水平排列 */
+    flex-wrap: wrap; /* 如果标签太多，允许换行 */
+    margin-bottom: 1rem; /* 列表和底部链接之间的间距 */
+}
+
+.card-tech-list li {
+    background-color: var(--accent-color); /* 标签背景色 */
+    color: #fff; /* 标签文字颜色 */
+    font-size: 1rem; 
+    font-weight: 500;
+    padding: 0.25rem 0.75rem; /* 标签内边距 */
+    border-radius: 999px; /* 用一个超大的值来确保两端是完美的半圆形 */
+    margin-right: 0.5rem; /* 标签之间的右边距 */
+    margin-bottom: 0.5rem; /* 标签换行时的下边距 */
+}
+
+.card-links {
+    margin-top: auto; /* 魔法发生的地方！自动占据上方所有可用空间 */
+}
+
+.card-links a {
+    font-weight: bold;
+}
+
+
+/* === 联系表单 (Contact Form) === */
+.contact-form {
+    max-width: 600px; /* 限制表单最大宽度，在宽屏上不会过宽 */
+    margin: 30px auto; /* 上下外边距30px，左右自动，实现表单居中 */
+}
+
+.form-group {
+    margin-bottom: 20px; /* 每个输入组的下外边距，用于分隔 */
+}
+
+.contact-form label {
+    display: block; /* 让label独占一行，显示在输入框上方 */
+    font-weight: bold;
+    margin-bottom: 5px; /* label和输入框之间的小间距 */
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%; /* 让输入框宽度占满父容器 */
+    padding: 12px; /* 内部留白，让文字不贴边 */
+    border: 1px solid #ccc; 
+    border-radius: 6px; 
+    font-size: 1rem; 
+    font-family: inherit; 
+    transition: border-color 0.2s ease, box-shadow 0.2s ease; 
+}
+
+/* 当用户点击输入框时（聚焦状态）的样式 */
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    outline: none; /* 去掉浏览器默认的蓝色或橙色轮廓 */
+    border-color: #007bff; /* 将边框颜色变为我们的主色调蓝色 */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 添加一个轻微的发光效果 */
+}
+
+.contact-form button[type="submit"] {
+    display: inline-block;
+    width: 100%; /* 让按钮也占满宽度 */
+    padding: 15px;
+    background-color: var(--primary-color); 
+    color: white; 
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none; /* 去掉边框 */
+    border-radius: 6px;
+    cursor: pointer; 
+    transition: background-color 0.2s ease;
+}
+
+/* 鼠标悬停在按钮上时的效果 */
+.contact-form button[type="submit"]:hover {
+    background-color: var(--highlight-color)
+}
+
+
+/* === 项目卡片Project cards === */
+.project-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--subtle-border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card h3 {
+    color: var(--primary-color); /* 项目标题使用主色调 */
+}
+
+/*  技能标签 (使用强调色) */
+.card-tech-list li {
+    background-color: var(--accent-color); 
+    color: var(--text-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* === 技能表格My skills === */
+.skills table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(104,90,213,0.07);
+    margin-top: 1.2em;
+    margin-bottom: 2.5em;
+}
+
+.skills th, .skills td {
+    padding: 0.85em 1em;
+    text-align: left;
+}
+
+.skills thead th {
+    background: var(--secondary-color);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 1px solid #000;
+}
+
+.skills tbody tr {
+    border-bottom: 1.2px solid #f0f0f05f;
+    transition: background 0.18s;
+}
+
+.skills tbody tr:hover {
+    background: #f7f7f78b;
+}
+
+.skills td a {
+    color: var(--secondary-color);
+    transition: color 0.18s;
+}
+
+.skills td a:hover {
+    color: var(--highlight-color);
+}
+
+

@@ -1,0 +1,216 @@
+/* === Index Page（首页大图区域）=== */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    color: #fff;
+    background-image: url('../images/hero-background.jpg'); 
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    min-height: 400px;
+}
+
+/* 半透明遮罩层，提升文字可读性 */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.38);
+    z-index: 1;
+}
+
+/* 确保内容在遮罩层之上 */
+.hero-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* 首页副标题 */
+.hero-section .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1.5em;
+    color: #f7f7f7d7;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+}
+
+/* 首页按钮样式 */
+.hero-section .hero-btn {
+    display: inline-block;
+    padding: 0.7em 2.2em;
+    font-size: 1.1rem;
+    border-radius: 32px;
+    background: var(--primary-color, #685ad5);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Noto Sans SC', 'Segoe UI', Arial, sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 12px rgba(104,90,213,0.08);
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 1em;
+    z-index: 2;
+    position: relative;
+}
+.hero-section .hero-btn:hover {
+    background: var(--accent-color, #9500ca);
+    transform: translateY(-2px) scale(1.04);
+}
+
+/* == Life Page == */
+/* page-intro */
+.page-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    margin-top: 30px;
+}
+
+.page-intro img {
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto; /* 保证整体居中 */
+    border-radius: 14px;
+    box-shadow: 0 2px 16px rgba(104,90,213,0.08);
+    margin-bottom: 20px;
+}
+.page-intro figcaption {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-top: 1px;
+    font-style: italic;
+}
+
+.page-intro p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 0.4rem;
+    max-width: 800px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto; /* 保证整体居中 */
+}
+
+
+/* === ABOUT ME PAGE === */
+
+/* 背景 */
+.introduction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    color: var(--text-color);
+    background-image: url('../images/about-background.jpg'); 
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    min-height: 400px;
+}
+
+/* 半透明遮罩层，提升文字可读性 */
+.introduction::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+/* 确保内容在遮罩层之上 */
+.introduction > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* 文字 */
+
+.introduction p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+/* === My Projects Page === */
+.skills {
+    margin-bottom: 3.5em;
+}
+
+.skills p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.projects-grid p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+/* === Contact Page === */
+.contact-background {
+    background-image: url('../images/contact-background.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    min-height: 400px;
+    padding: 40px 20px;
+    color: var(--text-color);
+    position: relative;
+}
+
+/* 美化联系表单，使其成为“浮动卡片” */
+.contact-form {
+    background-color: rgba(255, 255, 255, 0.6); /* 半透明的白色背景，让文字清晰可读 */
+    padding: 2rem 2.5rem; 
+    border-radius: 12px; 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    position: relative;
+}
+
+/* 确保在背景图上，文字是清晰的 */
+
+.contact-background p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+/* 半透明遮罩层，提升文字可读性 */
+.contact-background::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.18);
+    z-index: 1;
+}
+
+/* 确保内容在遮罩层之上 */
+.contact-background > * {
+    position: relative;
+    z-index: 2;
+}
