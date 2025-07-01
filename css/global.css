@@ -129,5 +129,9 @@ nav a.active {
     letter-spacing: 1px;
 }
 
+nav a .active {
+    color: var(--highlight-color);
+    text-decoration: underline;
+}
 
 
