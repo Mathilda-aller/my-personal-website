@@ -1,39 +1,51 @@
-// gallery.js - 画廊图片点击放大查看功能
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.querySelector('#image-modal');
+  const modalImage = document.querySelector('#modal-image');
+  const closeButton = document.querySelector('.close-btn');
+  if (!modal || !modalImage || !closeButton) return;
 
-    // 获取所有需要点击的图片元素
-    const galleryImages = document.querySelectorAll('.gallery-item img');
+  let lastTrigger = null;
 
-    // 获取弹窗相关的元素
-    const modal = document.querySelector('#image-modal');
-    const modalImage = document.querySelector('#modal-image');
-    const closeBtn = document.querySelector('.close-btn');
+  const openModal = (image) => {
+    lastTrigger = image;
+    modalImage.src = image.currentSrc || image.src;
+    modalImage.alt = image.alt;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('menu-open');
+    closeButton.focus();
+  };
 
-    // 只有在页面上存在弹窗时才执行
-    if (modal) {
-       
-        // 为每一张画廊图片添加点击事件
-        galleryImages.forEach(function(img) {
-            img.addEventListener('click', function() {
+  const closeModal = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    modalImage.removeAttribute('src');
+    document.body.classList.remove('menu-open');
+    lastTrigger?.focus();
+  };
 
-                modal.style.display = "block"; // 显示弹窗
-                modalImage.src = this.src;     // 将弹窗中的图片源设置为被点击图片的源
-            });
-        });
+  document.querySelectorAll('.gallery-item img').forEach((image) => {
+    image.tabIndex = 0;
+    image.setAttribute('role', 'button');
+    image.setAttribute('aria-label', `Open photo: ${image.alt || 'a moment from my life'}`);
+    image.addEventListener('click', () => openModal(image));
+    image.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openModal(image);
+      }
+    });
+  });
 
-        // 关闭弹窗（点击“关闭”按钮时）
-        function closeModal() {
-            modal.style.display = "none";
-        }
-        closeBtn.addEventListener('click', closeModal);
-        // 关闭弹窗（点击弹窗外部时）
-        modal.addEventListener('click', function(event) {
-            // event.target 是触发事件的元素
-            // 如果点击的是弹窗本身（而不是弹窗内的图片或关闭按钮），则关闭弹窗
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
-
+  closeButton.addEventListener('click', closeModal);
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    if (event.key === 'Tab' && modal.classList.contains('open')) {
+      event.preventDefault();
+      closeButton.focus();
     }
+  });
 });

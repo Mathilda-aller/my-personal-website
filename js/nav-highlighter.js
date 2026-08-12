@@ -1,18 +1,12 @@
-document.addEventListener('DOMContentLoaded', function(){
-    // 获取当前页面的url
-    const currentUrl = window.location.href;
-    // 获取所有导航链接
-    const allLinks = document.querySelectorAll('nav a');
+document.addEventListener('DOMContentLoaded', () => {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const sectionPage = currentPage === 'project-anima-isle.html' ? 'projects.html' : currentPage;
 
-    // 遍历所有链接
-    allLinks.forEach(function(link){
-        // 获取遍历链接的href属性
-        const linkHref = link.href;
-
-        // 如果链接的href与当前页面的url相同
-        if (linkHref === currentUrl) {
-            // 给这个链接添加一个类名，表示它是当前页面的链接
-            link.classList.add('active');
-        }
-    })
-})
+  document.querySelectorAll('nav a').forEach((link) => {
+    const linkPage = new URL(link.href, window.location.href).pathname.split('/').pop();
+    if (linkPage === sectionPage) {
+      link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+});

@@ -1,215 +1,68 @@
-/* === Index Page（首页大图区域）=== */
-.hero-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 90vh;
-    text-align: center;
-    padding: 0 20px;
-    position: relative;
-    color: #fff;
-    background-image: url('../images/hero-background.jpg'); 
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    min-height: 400px;
+.home-page { height: 100svh; overflow: hidden; }
+.home-stage { position: relative; min-height: 100svh; overflow: hidden; background: #126f9e url('../images/optimized/hero-background.webp') center / cover no-repeat; color: var(--white); }
+.home-stage::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(1,25,63,.62), rgba(1,25,63,.12) 56%, rgba(1,25,63,.2)); }
+.home-intro { position: absolute; z-index: 2; left: max(28px, calc((100vw - 1120px)/2)); top: 17%; max-width: 720px; }
+.home-intro .script-title { font-size: clamp(4rem, 8vw, 7.2rem); line-height: 1.08; text-shadow: 0 5px 24px rgba(0,25,60,.28); }
+.home-title-line { display: block; width: max-content; white-space: nowrap; }
+.home-title-line + .home-title-line { margin-top: .08em; }
+.home-intro p { max-width: 42ch; margin: 30px 0 0; color: rgba(248,253,255,.9); }
+
+.scene-link { position: absolute; z-index: 3; display: grid; place-items: center; width: 118px; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.65); border-radius: 50%; background: rgba(4,52,94,.18); color: var(--white); font-family: var(--display); font-size: 1.35rem; cursor: pointer; text-shadow: 0 2px 8px rgba(0,20,50,.5); transition: transform .24s ease, background .24s ease; }
+.scene-link:hover { transform: rotate(-7deg) scale(1.08); background: rgba(242,95,92,.82); }
+.scene-link[data-scene="work"] { right: 13%; top: 22%; }
+.scene-link[data-scene="life"] { right: 26%; bottom: 15%; width: 98px; }
+.scene-link[data-scene="about"] { right: 5%; bottom: 28%; width: 90px; }
+
+.scene-drawer { position: fixed; z-index: 80; inset: 0 0 0 auto; width: min(520px, 92vw); padding: 90px 42px 40px; overflow-y: auto; background: rgba(251,244,229,.92); border-radius: 10px 0 0 10px; color: var(--ink); box-shadow: -24px 0 70px rgba(0,20,55,.25); visibility: hidden; transform: translateX(105%); transition: transform .32s cubic-bezier(.22,1,.36,1), visibility .32s; }
+.scene-drawer.open { visibility: visible; transform: translateX(0); }
+.drawer-close { position: absolute; right: 22px; top: 20px; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 50%; background: transparent; font-size: 1.4rem; cursor: pointer; }
+.scene-panel { display: none; }
+.scene-panel.active { display: block; animation: settle .38s ease-out both; }
+.scene-panel .script-title { font-size: clamp(3rem, 8vw, 5rem); color: var(--ocean); }
+.drawer-photo { width: 78%; margin: 30px 0 25px auto; transform: rotate(2deg); box-shadow: 0 15px 35px rgba(8,47,102,.18); }
+.drawer-photo.phone { width: 45%; margin-right: 17%; border-radius: 18px; }
+.scribble { margin: 20px 0; padding: 14px 18px; border-left: 1px solid var(--coral); color: rgba(8,47,102,.72); font-style: italic; }
+@keyframes settle { from { opacity: 0; transform: translateY(12px) rotate(.5deg); } to { opacity: 1; transform: none; } }
+
+.page-shell { min-height: 100svh; padding: 120px 0 55px; }
+.page-heading { margin-bottom: 45px; }
+.page-heading .script-title { color: var(--ocean); }
+.page-heading .script-title + p, .contact-paper .script-title + p { margin-top: clamp(32px, 3.5vw, 46px); }
+
+.about-page { min-height: 100svh; background: #dff5fb url('../images/optimized/about-background.webp') center / cover fixed; }
+.about-page::before, .contact-page::before { content: ''; position: fixed; inset: 0; background: rgba(236,249,251,.48); pointer-events: none; }
+.about-stage { position: relative; z-index: 1; min-height: 100svh; padding: 120px 0 45px; }
+.about-note { width: min(580px, 92%); padding: clamp(25px, 5vw, 52px); background: rgba(251,244,229,.79); box-shadow: 0 20px 60px rgba(8,47,102,.16); transform: rotate(-1deg); }
+.memory-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 18px; }
+.memory-button { padding: 8px 13px; border: 1px solid var(--line); background: transparent; cursor: pointer; }
+.memory-button.active { background: var(--mist); transform: rotate(-2deg); }
+.memory-text { min-height: 120px; }
+.memory-card { display: none; }
+.memory-card.active { display: block; animation: settle .28s ease-out; }
+
+.contact-page { min-height: 100svh; background: #bfe9f2 url('../images/contact-background.jpg') center / cover fixed; }
+.contact-stage { position: relative; z-index: 1; min-height: 100svh; display: grid; place-items: center; padding: 110px 20px 50px; }
+.contact-paper { width: min(920px, 100%); display: grid; grid-template-columns: .95fr 1.05fr; gap: 44px; padding: clamp(24px, 5vw, 52px); background: rgba(251,244,229,.81); box-shadow: 0 22px 65px rgba(8,47,102,.2); transform: rotate(.4deg); }
+.contact-paper .script-title { font-size: clamp(3.8rem, 6vw, 5.3rem); }
+.about-note, .contact-paper { position: relative; isolation: isolate; overflow: hidden; border-radius: var(--soft-corner); }
+.about-note::before, .contact-paper::before { content: ''; position: absolute; z-index: 0; inset: 0; pointer-events: none; background-image: radial-gradient(ellipse at 12% 18%, rgba(116,91,57,.10) 0 .7px, transparent 1.7px), radial-gradient(ellipse at 78% 62%, rgba(8,47,102,.055) 0 .8px, transparent 1.8px), repeating-linear-gradient(8deg, rgba(116,91,57,.024) 0 1px, transparent 1px 9px); background-size: 31px 23px, 47px 37px, 100% 13px; opacity: .58; mix-blend-mode: multiply; }
+.about-note > *, .contact-paper > * { position: relative; z-index: 1; }
+
+@media (max-width: 740px) {
+  .home-intro { left: 22px; right: 22px; top: 16%; }
+  .home-intro .script-title { font-size: clamp(3.25rem, 16vw, 3.8rem); }
+  .home-intro p { max-width: 28ch; }
+  .scene-link { width: 86px; font-size: 1.08rem; }
+  .scene-link[data-scene="work"] { right: 8%; top: 69%; }
+  .scene-link[data-scene="life"] { left: 10%; right: auto; bottom: 10%; width: 78px; }
+  .scene-link[data-scene="about"] { right: 8%; bottom: 8%; width: 72px; }
+  .scene-drawer { padding: 82px 24px 35px; }
+  .about-page, .contact-page { background-attachment: scroll; }
+  .about-stage { padding-top: 95px; }
+  .about-note { margin-inline: auto; transform: none; }
+  .contact-paper { grid-template-columns: 1fr; transform: none; }
 }
 
-/* 半透明遮罩层，提升文字可读性 */
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.38);
-    z-index: 1;
-}
-
-/* 确保内容在遮罩层之上 */
-.hero-section > * {
-    position: relative;
-    z-index: 2;
-}
-
-
-/* 首页副标题 */
-.hero-section .subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 1.5em;
-    color: #f7f7f7d7;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
-}
-
-/* 首页按钮样式 */
-.hero-section .hero-btn {
-    display: inline-block;
-    padding: 0.7em 2.2em;
-    font-size: 1.1rem;
-    border-radius: 32px;
-    background: var(--primary-color, #685ad5);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-family: 'Noto Sans SC', 'Segoe UI', Arial, sans-serif;
-    font-weight: 600;
-    letter-spacing: 1px;
-    box-shadow: 0 2px 12px rgba(104,90,213,0.08);
-    transition: background 0.2s, transform 0.2s;
-    margin-top: 1em;
-    z-index: 2;
-    position: relative;
-}
-.hero-section .hero-btn:hover {
-    background: var(--accent-color, #9500ca);
-    transform: translateY(-2px) scale(1.04);
-}
-
-/* == Life Page == */
-/* page-intro */
-.page-intro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
-    margin-top: 30px;
-}
-
-.page-intro img {
-    width: 100%;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto; /* 保证整体居中 */
-    border-radius: 14px;
-    box-shadow: 0 2px 16px rgba(104,90,213,0.08);
-    margin-bottom: 20px;
-}
-.page-intro figcaption {
-    font-size: 1.1rem;
-    color: var(--text-color);
-    margin-top: 1px;
-    font-style: italic;
-}
-
-.page-intro p {
-    font-size: 1.1rem;
-    color: var(--text-color);
-    margin-bottom: 0.4rem;
-    max-width: 800px;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto; /* 保证整体居中 */
-}
-
-
-/* === ABOUT ME PAGE === */
-
-/* 背景 */
-.introduction {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 5rem 1.5rem; 
-    position: relative;
-    color: var(--text-color);
-    background-image: url('../images/about-background.jpg'); 
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    min-height: 400px;
-}
-
-/* 半透明遮罩层，提升文字可读性 */
-.introduction::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255, 255, 255, 0.3);
-    z-index: 1;
-}
-
-/* 确保内容在遮罩层之上 */
-.introduction > * {
-    position: relative;
-    z-index: 2;
-}
-
-/* 文字 */
-
-.introduction p {
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-}
-
-/* === My Projects Page === */
-.skills {
-    margin-bottom: 3.5em;
-}
-
-.skills p {
-    font-size: 1.1rem;
-    color: var(--text-color);
-    margin-bottom: 1rem;
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-    margin-top: 30px;
-}
-
-.projects-grid p {
-    font-size: 1.1rem;
-    color: var(--text-color);
-    margin-bottom: 1rem;
-}
-
-/* === Contact Page === */
-.contact-background {
-    background-image: url('../images/contact-background.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    min-height: 400px;
-    padding: 40px 20px;
-    color: var(--text-color);
-    position: relative;
-}
-
-/* 美化联系表单，使其成为“浮动卡片” */
-.contact-form {
-    background-color: rgba(255, 255, 255, 0.6); /* 半透明的白色背景，让文字清晰可读 */
-    padding: 2rem 2.5rem; 
-    border-radius: 12px; 
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); 
-    border: 1px solid rgba(255, 255, 255, 0.2); 
-    position: relative;
-}
-
-/* 确保在背景图上，文字是清晰的 */
-
-.contact-background p {
-    font-size: 1.3rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-}
-
-/* 半透明遮罩层，提升文字可读性 */
-.contact-background::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255, 255, 255, 0.18);
-    z-index: 1;
-}
-
-/* 确保内容在遮罩层之上 */
-.contact-background > * {
-    position: relative;
-    z-index: 2;
+@media (max-width: 480px) {
+  .home-intro .script-title { font-size: clamp(2.65rem, 13vw, 3.3rem); }
 }

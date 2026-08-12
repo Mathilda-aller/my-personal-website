@@ -1,50 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About me - Mathilda的个人网站</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/layouts.css">
-    <link rel="stylesheet" href="css/components.css">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A little more about Mathilda: language, building, movement, and connection."><title>About me · Mathilda</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="css/global.css"><link rel="stylesheet" href="css/layouts.css"><link rel="stylesheet" href="css/components.css">
 </head>
-<body>
-    <header class="site-header">
-        <div class="container">
-            <div class="site-logo">
-                <a href="index.html">Mathilda's Website</a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="about.html">关于我</a></li>
-                    <li><a href="projects.html">我的项目</a></li>
-                    <li><a href="life.html">日常生活</a></li>
-                    <li><a href="contact.html">联系我</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section class="introduction">
-            <h1 class="en-title">About me.</h1>
-            <h2>谢谢你愿意了解我！🫶</h2>
-            <p>我目前就读于北京外国语大学，是一名法语专业的学生。</p>
-            <p>Mathilda是我的法语名，来源于古日耳曼语，寓意战斗(battle)与力量(strength)。</p>
-            <p>我喜欢一切能让我感受到身体的力量与自由的运动，喜欢用技术去探索、创造、实现一些自己的ideas，喜欢与人建立的每一个真诚纯粹的联结🪢</p>
-            <p>我相信生活是一个不断寻找平衡的过程，希望自己既理性也细腻，既坚定也温柔。</p>
-            <p>谢谢你看到这里，很高兴在这个小小的角落与你相遇 :)</p>
-        </section>
-
-
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; 2025 Mathilda. 保留所有权利.</p>
-        </div>
-    </footer>
-    <script src="js/nav-highlighter.js"></script>
+<body class="about-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header"><div class="container"><div class="site-logo"><a href="index.html">Mathilda's Website</a></div><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span></button><nav id="site-nav" aria-label="Main navigation"><ul><li><a href="index.html">Home</a></li><li><a href="projects.html">Work</a></li><li><a href="life.html">Life</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Hello</a></li></ul></nav></div></header>
+  <main id="main-content" class="about-stage"><div class="container"><article class="about-note"><span class="eyebrow">A note from me</span><h1 class="script-title">About me.</h1><p>Thank you for wanting to know me a little better. I study French at Beijing Foreign Studies University, and I have also been teaching myself how to build with data, code, and AI.</p><p>I am interested in the point where precision meets feeling: language that carries a whole culture, technology that begins with a human need, and strength that does not require becoming hard.</p><div class="memory-buttons" role="tablist" aria-label="A few sides of me"><button class="memory-button active" type="button" data-memory="language" role="tab" aria-selected="true">language</button><button class="memory-button" type="button" data-memory="build" role="tab" aria-selected="false">building</button><button class="memory-button" type="button" data-memory="move" role="tab" aria-selected="false">movement</button><button class="memory-button" type="button" data-memory="people" role="tab" aria-selected="false">people</button></div><div class="memory-text"><section class="memory-card active" data-memory-card="language"><h2 class="script-subtitle">Language</h2><p>French taught me to notice the tiny distance between what someone says and what they mean. I carry that attentiveness into everything else.</p></section><section class="memory-card" data-memory-card="build"><h2 class="script-subtitle">Building</h2><p>I love the moment when a vague idea becomes something real enough to click, test, break, repair, and finally share with another person.</p></section><section class="memory-card" data-memory-card="move"><h2 class="script-subtitle">Movement</h2><p>Strength training, hiking, and long walks bring me back into my body. They remind me that patience is still a form of motion.</p></section><section class="memory-card" data-memory-card="people"><h2 class="script-subtitle">People</h2><p>I treasure sincere connections. A good conversation, a shared meal, or simply being fully present with someone can change the shape of a day.</p></section></div><p><a class="button" href="contact.html">Leave me a note</a></p></article></div></main>
+  <script src="js/main.js"></script><script src="js/interactions.js"></script><script src="js/nav-highlighter.js"></script>
 </body>
 </html>

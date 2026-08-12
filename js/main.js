@@ -1,24 +1,52 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // 获取返回顶部按钮的元素
-    const backToTopButton = document.querySelector('#back-to-top-btn');
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-current-year]').forEach((item) => {
+    item.textContent = new Date().getFullYear();
+  });
 
-    // 只有在页面上存在这个按钮时才执行
-    if(backToTopButton) {
-        // 监听整个窗口的滚动事件
-        window.onscroll = function() {
-            // 如果页面向下滚动的距离超过300像素，就显示按钮
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                backToTopButton.style.display = "block";
-            } else {
-                // 否则就隐藏按钮
-                backToTopButton.style.display = "none";
-            }
-        };
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('#site-nav');
+  if (toggle && nav) {
+    const closeMenu = () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
+      document.body.classList.remove('menu-open');
+    };
 
-        // 给按钮添加一个点击事件
-        backToTopButton.addEventListener('click', function() {
-            // 平滑地滚动回页面顶部
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        });
-    }
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        closeMenu();
+      } else {
+        nav.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-label', 'Close navigation');
+        document.body.classList.add('menu-open');
+        nav.querySelector('a')?.focus();
+      }
+    });
+
+    nav.addEventListener('click', (event) => {
+      if (event.target.closest('a')) closeMenu();
+    });
+    document.addEventListener('click', (event) => {
+      if (toggle.getAttribute('aria-expanded') === 'true' && !nav.contains(event.target) && !toggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760) closeMenu();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
+  }
+
+  const backToTopButton = document.querySelector('#back-to-top-btn');
+  if (backToTopButton) {
+    const updateButton = () => backToTopButton.classList.toggle('visible', window.scrollY > 500);
+    window.addEventListener('scroll', updateButton, { passive: true });
+    updateButton();
+    backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
 });
